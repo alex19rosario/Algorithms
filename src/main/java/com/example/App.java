@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.arrays_strings.ClosestNumberToZero;
+import com.example.arrays_strings.MergeString;
 
 import java.util.concurrent.ExecutionException;
 
@@ -11,8 +12,7 @@ import java.util.concurrent.ExecutionException;
 public class App 
 {
     public static void main( String[] args ) throws ExecutionException, InterruptedException {
-        int[] nums3 = {100000,-100000};
-        ClosestNumberToZero closestNumberToZero = new ClosestNumberToZero();
-        System.out.println(closestNumberToZero.findClosestNumber(nums3).get());
+        MergeString mergeString = new MergeString();
+        System.out.println(mergeString.mergeAlternately("abc", "pqr"));
     }
 }

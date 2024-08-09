@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.arrays_strings.ClosestNumberToZero;
 import com.example.arrays_strings.DistinctWays;
+import com.example.arrays_strings.MergeString;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +31,13 @@ public class ArraysStringsTests {
         DistinctWays distinctWays = new DistinctWays();
         Assertions.assertEquals(9L, distinctWays.findNumberOfWays(20, 10, 5).get());
         Assertions.assertEquals(1L, distinctWays.findNumberOfWays(5, 10, 10).get());
+    }
+
+    @Test
+    void mergeStringAlternatelyTest() throws ExecutionException, InterruptedException {
+        MergeString mergeString = new MergeString();
+        Assertions.assertEquals("apbqcr", mergeString.mergeAlternately("abc", "pqr").get());
+        Assertions.assertEquals("apbqrs", mergeString.mergeAlternately("ab", "pqrs").get());
+        Assertions.assertEquals("apbqcd", mergeString.mergeAlternately("abcd", "pq").get());
     }
 }
