@@ -21,7 +21,7 @@ public class ArraysStringsTests {
         Assertions.assertEquals(1, closestNumberToZero.findClosestNumber(nums2).get());
         Assertions.assertEquals(100000, closestNumberToZero.findClosestNumber(nums3).get());
         Assertions.assertEquals(0, closestNumberToZero.findClosestNumber(nums4).get());
-        Assertions.assertEquals(null, closestNumberToZero.findClosestNumber(nums5).get());
+        Assertions.assertEquals(0, closestNumberToZero.findClosestNumber(nums5).get());
         Assertions.assertEquals(1, closestNumberToZero.findClosestNumber(nums6).get());
     }
 
