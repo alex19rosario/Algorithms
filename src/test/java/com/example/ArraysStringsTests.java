@@ -3,14 +3,21 @@ package com.example;
 import com.example.arrays_strings.ClosestNumberToZero;
 import com.example.arrays_strings.DistinctWays;
 import com.example.arrays_strings.MergeString;
+import com.example.arrays_strings.romans.InvalidRomanException;
+import com.example.arrays_strings.romans.RomanToInteger;
+import com.example.arrays_strings.romans.RomanValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.concurrent.ExecutionException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ArraysStringsTests {
     @Test
-    void findClosestNumberToZeroTest() throws ExecutionException, InterruptedException {
+    void findClosestNumberToZeroTest() {
         int[] nums1 = {-4, -2, 1, 4, 8};
         int[] nums2 = {-2, -1, 1};
         int[] nums3 = {100000,-100000};
@@ -18,26 +25,48 @@ public class ArraysStringsTests {
         int[] nums5 = {};
         int[] nums6 = {-1, -1, 1};
         ClosestNumberToZero closestNumberToZero = new ClosestNumberToZero();
-        Assertions.assertEquals(1, closestNumberToZero.findClosestNumber(nums1).get());
-        Assertions.assertEquals(1, closestNumberToZero.findClosestNumber(nums2).get());
-        Assertions.assertEquals(100000, closestNumberToZero.findClosestNumber(nums3).get());
-        Assertions.assertEquals(0, closestNumberToZero.findClosestNumber(nums4).get());
-        Assertions.assertEquals(0, closestNumberToZero.findClosestNumber(nums5).get());
-        Assertions.assertEquals(1, closestNumberToZero.findClosestNumber(nums6).get());
+        Assertions.assertEquals(1, closestNumberToZero.findClosestNumber(nums1));
+        Assertions.assertEquals(1, closestNumberToZero.findClosestNumber(nums2));
+        Assertions.assertEquals(100000, closestNumberToZero.findClosestNumber(nums3));
+        Assertions.assertEquals(0, closestNumberToZero.findClosestNumber(nums4));
+        Assertions.assertEquals(0, closestNumberToZero.findClosestNumber(nums5));
+        Assertions.assertEquals(1, closestNumberToZero.findClosestNumber(nums6));
     }
 
     @Test
-    void numberOfDistinctWaysTest() throws ExecutionException, InterruptedException {
+    void numberOfDistinctWaysTest() {
         DistinctWays distinctWays = new DistinctWays();
-        Assertions.assertEquals(9L, distinctWays.findNumberOfWays(20, 10, 5).get());
-        Assertions.assertEquals(1L, distinctWays.findNumberOfWays(5, 10, 10).get());
+        Assertions.assertEquals(9L, distinctWays.findNumberOfWays(20, 10, 5));
+        Assertions.assertEquals(1L, distinctWays.findNumberOfWays(5, 10, 10));
     }
 
     @Test
-    void mergeStringAlternatelyTest() throws ExecutionException, InterruptedException {
+    void mergeStringAlternatelyTest() {
         MergeString mergeString = new MergeString();
-        Assertions.assertEquals("apbqcr", mergeString.mergeAlternately("abc", "pqr").get());
-        Assertions.assertEquals("apbqrs", mergeString.mergeAlternately("ab", "pqrs").get());
-        Assertions.assertEquals("apbqcd", mergeString.mergeAlternately("abcd", "pq").get());
+        Assertions.assertEquals("apbqcr", mergeString.mergeAlternately("abc", "pqr"));
+        Assertions.assertEquals("apbqrs", mergeString.mergeAlternately("ab", "pqrs"));
+        Assertions.assertEquals("apbqcd", mergeString.mergeAlternately("abcd", "pq"));
+    }
+
+    @Test
+    void romanToIntegerTest() throws InvalidRomanException {
+        RomanToInteger romanToInteger = new RomanToInteger(new RomanValidator());
+        Assertions.assertEquals(3, romanToInteger.romanToInt("III"));
+        Assertions.assertEquals(58, romanToInteger.romanToInt("LVIII"));
+        Assertions.assertEquals(1994, romanToInteger.romanToInt("MCMXCIV"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"MCMXCIVMCMXCIVXX", "XVS", "IIIIMMMM"})
+    void isValidRomanTest(String roman){
+        RomanValidator romanValidator = new RomanValidator();
+        romanValidator.isValidRoman(roman);
+    }
+
+    @Test
+    void InvalidRomanExceptionTest() {
+        RomanToInteger romanToInteger = new RomanToInteger(new RomanValidator());
+        Exception exception = assertThrows(InvalidRomanException.class, () -> romanToInteger.romanToInt("S"));
+        assertEquals("Invalid Roman Number", exception.getMessage());
     }
 }
