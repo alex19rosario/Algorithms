@@ -3,17 +3,21 @@ package com.example;
 import com.example.arrays_strings.ClosestNumberToZero;
 import com.example.arrays_strings.DistinctWays;
 import com.example.arrays_strings.MergeString;
+import com.example.arrays_strings.Subsequence;
 import com.example.arrays_strings.romans.InvalidRomanException;
 import com.example.arrays_strings.romans.RomanToInteger;
 import com.example.arrays_strings.romans.RomanValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.time.Duration;
+import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ArraysStringsTests {
     @Test
@@ -69,4 +73,19 @@ public class ArraysStringsTests {
         Exception exception = assertThrows(InvalidRomanException.class, () -> romanToInteger.romanToInt("S"));
         assertEquals("Invalid Roman Number", exception.getMessage());
     }
+
+    @Test
+    void romanToIntDurationTest() {
+        RomanToInteger romanToInteger = new RomanToInteger(new RomanValidator());
+        int ms =assertTimeout(Duration.ofMillis(5), () -> romanToInteger.romanToInt("MMMCMXLIV"));
+    }
+
+    @Test
+    void isSubsequenceTest() {
+        Subsequence subsequence = new Subsequence();
+        Assertions.assertTrue(subsequence.isSubsequence("", "xyz"));
+        Assertions.assertTrue(subsequence.isSubsequence("abc", "ahbgdc"));
+        Assertions.assertFalse(subsequence.isSubsequence("axc", "ahbgdc"));
+    }
+
 }
