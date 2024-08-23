@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.arrays_strings.ClosestNumberToZero;
 import com.example.arrays_strings.MergeString;
+import com.example.arrays_strings.SolutionMaxProfit;
 import com.example.arrays_strings.Subsequence;
 import com.example.arrays_strings.romans.InvalidRomanException;
 import com.example.arrays_strings.romans.RomanToInteger;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
 public class App 
 {
     public static void main( String[] args ) {
-        Subsequence s = new Subsequence();
-        System.out.println(s.isSubsequence("test", "Test"));
+        SolutionMaxProfit solutionMaxProfif = new SolutionMaxProfit();
+        System.out.println(solutionMaxProfif.maxProfit(new int[]{2,1,2,1,0,1,2}));
     }
 }

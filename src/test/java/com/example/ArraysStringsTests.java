@@ -1,21 +1,16 @@
 package com.example;
 
-import com.example.arrays_strings.ClosestNumberToZero;
-import com.example.arrays_strings.DistinctWays;
-import com.example.arrays_strings.MergeString;
-import com.example.arrays_strings.Subsequence;
+import com.example.arrays_strings.*;
 import com.example.arrays_strings.romans.InvalidRomanException;
 import com.example.arrays_strings.romans.RomanToInteger;
 import com.example.arrays_strings.romans.RomanValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.Duration;
-import java.util.stream.Stream;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -86,6 +81,15 @@ public class ArraysStringsTests {
         Assertions.assertTrue(subsequence.isSubsequence("", "xyz"));
         Assertions.assertTrue(subsequence.isSubsequence("abc", "ahbgdc"));
         Assertions.assertFalse(subsequence.isSubsequence("axc", "ahbgdc"));
+    }
+
+    @Test
+    void maxProfitTest(){
+        SolutionMaxProfit solutionMaxProfif = new SolutionMaxProfit();
+        Assertions.assertEquals(5, solutionMaxProfif.maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
+        Assertions.assertEquals(0, solutionMaxProfif.maxProfit(new int[]{7,6,4,3,1}));
+        Assertions.assertEquals(2, solutionMaxProfif.maxProfit(new int[]{2,1,2,1,0,1,2}));
+        Assertions.assertEquals(4, solutionMaxProfif.maxProfit(new int[]{3,3,5,0,0,3,1,4}));
     }
 
 }
