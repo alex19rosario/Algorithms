@@ -92,4 +92,12 @@ public class ArraysStringsTests {
         Assertions.assertEquals(4, solutionMaxProfif.maxProfit(new int[]{3,3,5,0,0,3,1,4}));
     }
 
+    @Test
+    void longestCommonPrefixTest(){
+        LongestCommonPrefix solution = new LongestCommonPrefix();
+        Assertions.assertEquals("fl", solution.longestCommonPrefix(new String[]{"flower","flow","flight"}));
+        Assertions.assertEquals("", solution.longestCommonPrefix(new String[]{"dog","racecar","car"}));
+        Assertions.assertEquals("", solution.longestCommonPrefix(new String[]{"dog",""}));
+    }
+
 }
