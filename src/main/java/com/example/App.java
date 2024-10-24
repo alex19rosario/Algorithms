@@ -5,6 +5,7 @@ import com.example.arrays_strings.romans.InvalidRomanException;
 import com.example.arrays_strings.romans.RomanToInteger;
 import com.example.arrays_strings.romans.RomanValidator;
 
+import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
@@ -15,7 +16,8 @@ import java.util.logging.Logger;
 public class App 
 {
     public static void main( String[] args ) {
-        LongestCommonPrefix sol = new LongestCommonPrefix();
-        System.out.println(sol.longestCommonPrefix(new String[]{"flower","flow","flight"}));
+        SummaryRanges sr = new SummaryRanges();
+        //System.out.println(sr.summaryRanges(new int[]{0, 1, 2, 4, 5, 7}));
+        System.out.println(sr.summaryRanges(new int[]{-5}));
     }
 }
