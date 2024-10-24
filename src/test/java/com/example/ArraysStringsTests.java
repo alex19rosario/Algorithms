@@ -4,12 +4,12 @@ import com.example.arrays_strings.*;
 import com.example.arrays_strings.romans.InvalidRomanException;
 import com.example.arrays_strings.romans.RomanToInteger;
 import com.example.arrays_strings.romans.RomanValidator;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.Duration;
+import java.util.Arrays;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -98,6 +98,13 @@ public class ArraysStringsTests {
         Assertions.assertEquals("fl", solution.longestCommonPrefix(new String[]{"flower","flow","flight"}));
         Assertions.assertEquals("", solution.longestCommonPrefix(new String[]{"dog","racecar","car"}));
         Assertions.assertEquals("", solution.longestCommonPrefix(new String[]{"dog",""}));
+    }
+
+    @Test
+    void summaryRangesTest(){
+        SummaryRanges summaryRanges = new SummaryRanges();
+        Assertions.assertIterableEquals(Arrays.asList("0->2", "4->5", "7"), summaryRanges.summaryRanges(new int[]{0, 1, 2, 4, 5, 7}));
+        Assertions.assertIterableEquals(Arrays.asList("0", "2->4", "6", "8->9"), summaryRanges.summaryRanges(new int[]{0, 2, 3, 4, 6, 8, 9}));
     }
 
 }
